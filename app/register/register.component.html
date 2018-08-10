@@ -6,45 +6,69 @@
               <div class="card fat">
                 <div class="card-body">
                   <h4 class="card-title">register</h4>
-                  <form method="POST" action="#">
+                  <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                           <label for="fname"><i class="fa fa-user" aria-hidden="true"></i> First Name</label>
-                          <input id="fname" type="text" class="form-control" name="fname" value="" required autofocus>
-                    </div>
+                          <input id="fname" type="text" formControlName="fname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fname?.errors }" name="fname" value="" required autofocus>
+                          <div *ngIf="submitted && f.fname?.errors">
+                            <div *ngIf="f.fname?.errors.required">First Name is required</div>
+                            <div *ngIf="f.fname?.errors.pattern">Name should contains only Characters</div>
+                          </div>
+                   </div>
                     <div class="form-group">
                         <label for="lname"><i class="fa fa-user" aria-hidden="true"></i> Last Name</label>
-                        <input id="lname" type="text" class="form-control" name="lname" value="" required autofocus>
-                    </div> 
+                        <input id="lname" type="text" formControlName="lname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lname?.errors }" name="lname" value="" required autofocus>
+                        <div *ngIf="submitted && f.lname?.errors">
+                          <div *ngIf="f.lname?.errors.required">Last Name is required</div>
+                          <div *ngIf="f.lname?.errors.pattern">Name should contains only Characters</div>
+                        </div>
+                      </div> 
                     <div class="form-group">
                         <label for="dob"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Date of Birth</label>
-                        <input id="dob" type="date" class="form-control" name="dob" value="" required autofocus>
-                    </div> 
+                        <input id="dob" type="date" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob?.errors }" name="dob" value="" required autofocus>
+                        <div *ngIf="submitted && f.dob?.errors">
+                          <div *ngIf="f.dob?.errors.required">Date of birth is required</div>
+                        </div>
+                      </div> 
                     
                     <div class="form-group">
                         <label for="gender">Gender</label>
                         <div class="form-group form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="male" name="gender">
+                            <input type="radio" class="form-check-input" id="male" name="gender" required>
                             <label class="form-check-label" for="male"><i class="fa fa-male" aria-hidden="true"></i> Male</label>
                         </div>
                         <div class="form-grou form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="female" name="gender">
+                            <input type="radio" class="form-check-input" id="female" name="gender" required>
                             <label class="form-check-label" for="female"><i class="fa fa-female" aria-hidden="true"></i> Female</label>
                         </div>                  
                     </div>
                     <div class="form-group">
                       <label for="email"><i class="fa fa-at"></i> E-Mail Address</label>
-                      <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                      <input id="email" type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email?.errors }" name="email" value="" required autofocus>
+                      <div *ngIf="submitted && f.email?.errors">
+                        <div *ngIf="f.email?.errors.required">Email is required</div>
+                        <div *ngIf="f.email?.errors.email">Email Should be Valid</div>
+                      </div>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" [formGroup]="passwordFormGroup">
                       <label for="password"><i class="fa fa-key"></i> Password
                       </label>
-                      <input id="password" type="password" class="form-control" name="password" required data-eye>
+                      <input id="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password?.errors }" name="password" value="" required data-eye>
+                      <div *ngIf="submitted && f.password?.errors">
+                        <div *ngIf="f.password?.errors.required">Paswword is required</div>
+                        <div *ngIf="f.password?.errors.minlength">Minimum 6 Charctars required</div>
+                        <div *ngIf="f.password?.errors.maxlength">Maximum 20 Characters required</div>
+                        <p class="bg-danger" *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">Password is required</p>
+ 
+                      </div>
                       <div class="form-group">
                           <label for="password"><i class="fa fa-key"></i> Confirm Password
                           </label>
-                          <input id="cpassword" type="password" class="form-control" name="cpassword" required data-eye>
-                        </div>
+                          <input id="cpassword" type="password" formControlName="cPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password?.errors }" name="fname" value="" required data-eye>
+                          <p class="bg-danger" *ngIf="passwordFormGroup.controls.cPassword.errors?.required && passwordFormGroup.controls.cPassword.touched">Repeat password is required</p>
+                          <p class="bg-danger" *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match</p>
+                      </div>
                     </div>
   
                     <div class="form-group">
