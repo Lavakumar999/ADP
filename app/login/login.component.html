@@ -6,10 +6,10 @@
             <div class="card fat">
               <div class="card-body">
                 <h4 class="card-title">Login</h4>
-                <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                <form #login="ngForm" [formGroup]="LoginForm" (ngSubmit)="onSubmit(login.value)">
                   <div class="form-group">
                     <label for="email"><i class="fa fa-at"></i> E-Mail Address</label>
-                    <input id="loginemail" type="email" formControlName="loginemail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginemail?.errors }" name="email" value="">
+                    <input id="loginemail" type="email" formControlName="loginemail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginemail?.errors }" name="email" value="" ngModel>
                     <div id="alertbox" *ngIf="submitted && f.loginemail?.errors">
                         <div *ngIf="f.loginemail?.errors.required">Email is required *</div>
                     </div>
@@ -21,7 +21,7 @@
                         Forgot Password?
                       </a>
                     </label>
-                    <input id="loginpassword" type="password" formControlName="loginpassword" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.loginpassword?.errors }"  name="loginpassword">
+                    <input id="loginpassword" type="password" formControlName="loginpassword" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.loginpassword?.errors }"  name="loginpassword" ngModel>
                     <div id="alertbox" *ngIf="submitted && f.loginpassword?.errors">
                       <div *ngIf="f.loginpassword?.errors.required">Paswword is required *</div>
                       <div *ngIf="f.loginpassword?.errors.minlength">Minimum 6 Charctars required *</div>
