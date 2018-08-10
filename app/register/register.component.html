@@ -6,7 +6,7 @@
               <div class="card fat">
                 <div class="card-body">
                   <h4 class="card-title">register</h4>
-                  <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+                  <form #register="ngForm" [formGroup]="RegisterForm" (ngSubmit)="onSubmit(register.value)">
                     <div class="form-group">
                           <label for="fname"><i class="fa fa-user" aria-hidden="true"></i> First Name</label>
                           <input id="fname" type="text" formControlName="fname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fname?.errors }" name="fname" value="" required autofocus>
@@ -34,13 +34,16 @@
                     <div class="form-group">
                         <label for="gender">Gender</label>
                         <div class="form-group form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="male" name="gender" required>
+                            <input type="radio" class="form-check-input" id="male" name="gender"  value="" required>
                             <label class="form-check-label" for="male"><i class="fa fa-male" aria-hidden="true"></i> Male</label>
                         </div>
                         <div class="form-grou form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="female" name="gender" required>
+                            <input type="radio" class="form-check-input" id="female" name="gender" value="" required>
                             <label class="form-check-label" for="female"><i class="fa fa-female" aria-hidden="true"></i> Female</label>
                         </div>                  
+                    </div>
+                    <div id="alertbox" *ngIf="submitted && f.gender?.errors">
+                      <div *ngIf="f.gender?.errors.required">Gender is required *</div>
                     </div>
                     <div class="form-group">
                       <label for="email"><i class="fa fa-at"></i> E-Mail Address</label>
@@ -63,7 +66,7 @@
                       <div class="form-group" [formGroup]="passwordFormGroup">
                           <label for="password"><i class="fa fa-key"></i> Confirm Password
                           </label>
-                          <input id="cpassword" type="password" formControlName="cPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && pass.cPassword.errors?.required }" name="cpassword" value="" required data-eye>
+                          <input id="cpassword" type="password" formControlName="cPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && pass.cPassword.errors?.required }" name="password" value="" required data-eye>
                           <div id="alertbox">
                             <div  *ngIf="pass.cPassword.errors?.required && pass.cPassword.touched">Confirm password is required</div>
                             <div  *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match *</div>  
