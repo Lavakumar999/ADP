@@ -18,31 +18,35 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.passwordFormGroup = this.formBuilder.group({
-      password: ['', Validators.required],
-      cPassword: ['', Validators.required]
-    }, {
-      validator: RegistrationValidator.validate.bind(this)
-    });
     this.RegisterForm=this.formBuilder.group({
       fname:['',[Validators.required,Validators.pattern('^[a-zA-z]+$')]],
       lname:['',[Validators.required,Validators.pattern('^[a-zA-z]+$')]],
       dob:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(6),Validators.maxLength(20),Validators.pattern('^[a-zA-z]+$')]],
       passwordFormGroup: this.passwordFormGroup
+    });
+    this.passwordFormGroup = this.formBuilder.group({
+      password:['',[Validators.required,Validators.minLength(6),Validators.maxLength(20),Validators.pattern('^[a-zA-z]+$')]],
+      cPassword: ['', Validators.required]
+    }, {
+      validator: RegistrationValidator.validate.bind(this)
     });
    
   }
   get f(){
     return this.RegisterForm.controls;
   }
+  get pass(){
+    return this.passwordFormGroup.controls;
+  }
   onSubmit(){
     this.submitted=true;
+    //console.log(this.RegisterForm{("password")})
     if(this.RegisterForm.invalid){
       return
     }
     alert("Sucess")
+  
   }
 
 }
