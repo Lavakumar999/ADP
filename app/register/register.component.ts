@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   passwordFormGroup: FormGroup;
   RegisterForm:FormGroup;
   submitted=false;
-  
+  gender:boolean;
   constructor(private formBuilder:FormBuilder) {
    }
 
@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
       fname:['',[Validators.required,Validators.pattern('^[a-zA-z]+$')]],
       lname:['',[Validators.required,Validators.pattern('^[a-zA-z]+$')]],
       dob:['',Validators.required],
+      gender:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       passwordFormGroup: this.passwordFormGroup
     });
@@ -31,6 +32,7 @@ export class RegisterComponent implements OnInit {
     }, {
       validator: RegistrationValidator.validate.bind(this)
     });
+    this.gender=true;
    
   }
   get f(){
@@ -39,8 +41,10 @@ export class RegisterComponent implements OnInit {
   get pass(){
     return this.passwordFormGroup.controls;
   }
-  onSubmit(){
+  onSubmit(regsitervalues){
     this.submitted=true;
+    console.log(regsitervalues)
+    console.log(this.passwordFormGroup.controls.password.value)
     //console.log(this.RegisterForm{("password")})
     if(this.RegisterForm.invalid){
       return
