@@ -1,0 +1,73 @@
+<div class="my-register-page">
+    <section class="h-100">
+        <div class="container h-100">
+          <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
+              <div class="card fat">
+                <div class="card-body">
+                  <h4 class="card-title">register</h4>
+                  <form method="POST" action="#">
+                    <div class="form-group">
+                          <label for="fname"><i class="fa fa-user" aria-hidden="true"></i> First Name</label>
+                          <input id="fname" type="text" class="form-control" name="fname" value="" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname"><i class="fa fa-user" aria-hidden="true"></i> Last Name</label>
+                        <input id="lname" type="text" class="form-control" name="lname" value="" required autofocus>
+                    </div> 
+                    <div class="form-group">
+                        <label for="dob"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Date of Birth</label>
+                        <input id="dob" type="date" class="form-control" name="dob" value="" required autofocus>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <div class="form-group form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="male" name="gender">
+                            <label class="form-check-label" for="male"><i class="fa fa-male" aria-hidden="true"></i> Male</label>
+                        </div>
+                        <div class="form-grou form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="female" name="gender">
+                            <label class="form-check-label" for="female"><i class="fa fa-female" aria-hidden="true"></i> Female</label>
+                        </div>                  
+                    </div>
+                    <div class="form-group">
+                      <label for="email"><i class="fa fa-at"></i> E-Mail Address</label>
+                      <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="password"><i class="fa fa-key"></i> Password
+                      </label>
+                      <input id="password" type="password" class="form-control" name="password" required data-eye>
+                      <div class="form-group">
+                          <label for="password"><i class="fa fa-key"></i> Confirm Password
+                          </label>
+                          <input id="cpassword" type="password" class="form-control" name="cpassword" required data-eye>
+                        </div>
+                    </div>
+  
+                    <div class="form-group">
+                      <label>
+                        <input type="checkbox" name="remember"> Remember Me
+                      </label>
+                    </div>
+  
+                    <div class="form-group no-margin">
+                      <button type="submit" class="btn btn-primary btn-block">
+                        register <i class="fa fa-sign-in"></i>
+                      </button>
+                    </div>
+                    
+                    <div class="margin-top20 text-center">
+                      Already have an account? <a routerLink="/login">Login</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  </div>
+  

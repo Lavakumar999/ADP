@@ -1,0 +1,49 @@
+<div class="my-login-page">
+  <section class="h-100">
+      <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+          <div class="card-wrapper">
+            <div class="card fat">
+              <div class="card-body">
+                <h4 class="card-title">Login</h4>
+                <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="email"><i class="fa fa-at"></i> E-Mail Address</label>
+                    <input id="loginemail" type="email" formControlName="loginemail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginemail.errors }" name="email" value="" required autofocus>
+                    <div *ngIf="submitted && f.email.errors">
+                        <div *ngIf="val.email.errors.required">Email is required</div>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="password"><i class="fa fa-key"></i> Password
+                      <a href="#" class="float-right">
+                        Forgot Password?
+                      </a>
+                    </label>
+                    <input id="loginpassword" type="password" formControlName="loginpassword" class="form-control" name="loginpassword" required data-eye>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" name="remember"> Remember Me
+                    </label>
+                  </div>
+
+                  <div class="form-group no-margin">
+                    <button type="submit" class="btn btn-primary btn-block">
+                      Login <i class="fa fa-sign-in"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="margin-top20 text-center">
+                    Don't have an account? <a routerLink="/register">Register Here</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
