@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import{FormBuilder, FormGroup, Validators } from '@angular/forms';
+import{FormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -27,8 +28,10 @@ export class LoginComponent implements OnInit {
   get f(){
     return this.LoginForm.controls;
   }
-  onSubmit(){
+  onSubmit(formvalues){
     this.submitted=true;
+    console.log(formvalues)
+    
     if(this.LoginForm.invalid){
       return
     }
