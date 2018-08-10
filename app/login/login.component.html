@@ -9,9 +9,9 @@
                 <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                     <label for="email"><i class="fa fa-at"></i> E-Mail Address</label>
-                    <input id="loginemail" type="email" formControlName="loginemail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginemail.errors }" name="email" value="" required autofocus>
-                    <div *ngIf="submitted && f.email.errors">
-                        <div *ngIf="val.email.errors.required">Email is required</div>
+                    <input id="loginemail" type="email" formControlName="loginemail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginemail?.errors }" name="email" value="">
+                    <div *ngIf="submitted && f.loginemail?.errors">
+                        <div *ngIf="f.loginemail?.errors.required">Email is required</div>
                     </div>
                   </div>
                   
@@ -21,7 +21,12 @@
                         Forgot Password?
                       </a>
                     </label>
-                    <input id="loginpassword" type="password" formControlName="loginpassword" class="form-control" name="loginpassword" required data-eye>
+                    <input id="loginpassword" type="password" formControlName="loginpassword" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.loginpassword?.errors }"  name="loginpassword">
+                    <div *ngIf="submitted && f.loginpassword?.errors">
+                      <div *ngIf="f.loginpassword?.errors.required">Paswword is required</div>
+                      <div *ngIf="f.loginpassword?.errors.minlength">Minimum 6 Charctars required</div>
+                      <div *ngIf="f.loginpassword?.errors.maxlength">Maximum 20 Characters required</div>
+                    </div>
                   </div>
 
                   <div class="form-group">
