@@ -59,6 +59,9 @@
 	color: #888;
 	text-align: center;
 }
+#alertbox{
+	color:red;
+}
 
 @media screen and (max-width: 425px) {
 	.my-register-page .card-wrapper {
