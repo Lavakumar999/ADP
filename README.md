@@ -1,2 +1,3 @@
 # ADP
-Project Done in ADP Training using Angular 6
+Project Gave By ADP During training using technologies like Angular6, TypeScript
+
