@@ -16,6 +16,7 @@
                           </div>
                    </div>
                     <div class="form-group">
+                      
                         <label for="lname"><i class="fa fa-user" aria-hidden="true"></i> Last Name</label>
                         <input id="lname" type="text" formControlName="lname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lname?.errors }" name="lname" value="" required autofocus>
                         <div id="alertbox" *ngIf="submitted && f.lname?.errors">
@@ -25,20 +26,20 @@
                       </div> 
                     <div class="form-group">
                         <label for="dob"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Date of Birth</label>
-                        <input id="dob" type="date" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob?.errors }" name="dob" value="" required autofocus>
+                        <input type="date" id="datepicker" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob?.errors }" name="dob" value="" required autofocus>
                         <div id="alertbox" *ngIf="submitted && f.dob?.errors">
                           <div *ngIf="f.dob?.errors.required">Date of birth is required *</div>
                         </div>
                       </div> 
-                    
+      
                     <div class="form-group">
                         <label for="gender">Gender</label>
                         <div class="form-group form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="male" name="gender"  value="" required>
+                            <input type="radio" class="form-check-input" value="male" id="male" name="gender" required>
                             <label class="form-check-label" for="male"><i class="fa fa-male" aria-hidden="true"></i> Male</label>
                         </div>
                         <div class="form-grou form-check form-check-inline">
-                            <input type="radio" class="form-check-input" id="female" name="gender" value="" required>
+                            <input type="radio" class="form-check-input" value="female" id="female" name="gender" required>
                             <label class="form-check-label" for="female"><i class="fa fa-female" aria-hidden="true"></i> Female</label>
                         </div>                  
                     </div>
