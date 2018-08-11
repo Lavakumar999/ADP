@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(regsitervalues){
     this.submitted=true;
     console.log(regsitervalues)
+    console.log("Person Details")
+    console.log(regsitervalues["fname"])
     console.log(this.passwordFormGroup.controls.password.value)
     //console.log(this.RegisterForm{("password")})
     if(this.RegisterForm.invalid){
